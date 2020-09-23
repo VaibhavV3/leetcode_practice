@@ -1,3 +1,5 @@
+// First rotate image around diagonal.. and then flip the image horizantally
+
 class Solution {
     public void rotate(int[][] matrix) {
         int n=matrix.length;
