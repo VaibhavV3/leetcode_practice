@@ -1,0 +1,35 @@
+// Time Complexity: O(n) where n is length of string.
+// Space Complexity: O(1)
+
+
+class Solution {
+    
+    HashMap<Character,Integer> hm;
+    
+    Solution(){
+        hm=new HashMap<Character,Integer>();
+        hm.put('I',1);
+        hm.put('V',5);
+        hm.put('X',10);
+        hm.put('L',50);
+        hm.put('C',100);
+        hm.put('D',500);
+        hm.put('M',1000);
+    }
+    
+    
+    public int romanToInt(String s) {
+        int sum=0,sLen=s.length();
+        char prev='0';
+        for(int i=0;i<sLen;i++){
+            char ch=s.charAt(i);
+            if((prev=='I'&& (ch=='V' || ch=='X')) || (prev=='X'&& (ch=='L' || ch=='C')) || (prev=='C'&& (ch=='D' || ch=='M'))){
+                sum=sum-2*hm.get(prev);
+            }
+            sum+= hm.get(ch);
+            prev=ch;
+            
+        }
+        return sum;
+    }
+}
